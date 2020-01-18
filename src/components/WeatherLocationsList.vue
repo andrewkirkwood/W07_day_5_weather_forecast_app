@@ -11,7 +11,7 @@
             <th>Max-temp</th>
           </tr>
           <tr v-for="item in city.consolidated_weather">
-            <td >{{ item.created }}</td>
+            <td >{{ item.created.split("T")[0] }}</td>
             <td >{{ item.weather_state_name }}</td>
             <td>{{ Math.round(item.min_temp)}}</td>
             <td>{{ Math.round(item.max_temp) }}</td>
