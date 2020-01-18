@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <h1>Rain Check</h1>
-    <weather-locations-drop-down-form :cities="allCities"/>
+    <h1>Scottish Rain Check</h1>
+    <weather-locations-drop-down-form :cities="allCities" :parentSelectedCity="selectedCity"/>
     <weather-locations-list :cities="allCities"/>
+    <h2>{{selectedCity}}</h2>
   </div>
 </template>
 
@@ -32,6 +33,10 @@ export default {
     fetch("http://localhost:4000/aberdeen")
     .then(res => res.json())
     .then(aberdeen => this.allCities.push(aberdeen))
+
+    eventBus.$on('city-selected', (city)=> {
+              this.selectedCity = city
+            })
   }
 }
 </script>

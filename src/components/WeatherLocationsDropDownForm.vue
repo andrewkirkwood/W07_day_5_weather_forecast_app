@@ -1,7 +1,8 @@
 <template lang="html">
-  <select v-on:select.prevent>
-    <option v-on:change="handleSelect" v-for="city in cities"> {{ city.title}}</option>
-  </select>
+    <select v-on:change="handleSelect" >
+      <option v-for="city in cities"> {{ city.title}}</option>
+    </select>
+
 </template>
 
 <script>
@@ -9,9 +10,16 @@ import {eventBus} from '../main.js'
 
 export default {
   name: 'weather-drop-down-form',
-  props: ['cities'],
+  data() {
+    return {
+      selectedCity: this.parentSelectedCity
+    }
+  },
+  props: ['cities', 'parentSelectedCity'],
   methods: {
-    handleSelect: 
+    handleSelect() {
+      eventBus.$emit('city-selected', this.selectedCity)
+    }
   }
 }
 </script>
