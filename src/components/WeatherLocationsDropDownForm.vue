@@ -1,8 +1,13 @@
 <template lang="html">
-    <select v-on:change="handleSelect" >
-      <option v-for="city in cities"> {{ city.title}}</option>
-    </select>
 
+  <div class="">
+
+
+    <select v-on:change="handleSelect">
+      <option v-for="city in cities" > {{ city.title}}</option>
+    </select>
+    <button type="button" v:on:submit="handeAddToFavourites" >Add to favourites</button>
+</div>
 </template>
 
 <script>
@@ -17,8 +22,11 @@ export default {
   },
   props: ['cities', 'parentSelectedCity'],
   methods: {
+    handleAddtoFavourites() {
+      eventBus.$emit('city-to-favourites', this.selectedCity)
+    },
     handleSelect() {
-      eventBus.$emit('city-selected', this.selectedCity)
+      this.selectedCity = city
     }
   }
 }

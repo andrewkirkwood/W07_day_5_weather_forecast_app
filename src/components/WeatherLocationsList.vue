@@ -1,6 +1,6 @@
 <template lang="html">
   <ul>
-    <li v-for="city in cities">
+    <li v-for="city in savedCities">
       <h2>{{ city.title }}</h2>
       <table>
         <tr>
@@ -26,7 +26,7 @@ import {eventBus} from '../main.js'
 
 export default {
   name: 'weather-locations-list',
-  props: ['cities'],
+  props: ['savedCities'],
   methods: {
 
   }
