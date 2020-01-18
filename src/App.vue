@@ -35,19 +35,21 @@ export default {
     .then(aberdeen => this.allCities.push(aberdeen))
 
     eventBus.$on('city-to-favourites', city=> {
-            this.savedCities.push(city)
-            })
+      if (!this.savedCities.includes(city)) {
+        this.savedCities.push(city)
+      }
+    })
   }
 }
 </script>
 
 <style>
 #app {
-font-family: 'Avenir', Helvetica, Arial, sans-serif;
--webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
-text-align: center;
-color: #2c3e50;
-margin-top: 60px;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
