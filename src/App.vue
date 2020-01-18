@@ -3,7 +3,7 @@
     <h1>Scottish Rain Check</h1>
     <h3>Select your favourite cities</h3>
     <weather-locations-drop-down-form :cities="allCities" :parentSelectedCity="selectedCity"/>
-    <weather-locations-list :cities="allCities"/>
+    <weather-locations-list :cities="savedCities"/>
   </div>
 </template>
 
@@ -34,8 +34,8 @@ export default {
     .then(res => res.json())
     .then(aberdeen => this.allCities.push(aberdeen))
 
-    eventBus.$on('city-to-favourites', (city)=> {
-              this.savedCities.push(city)
+    eventBus.$on('city-to-favourites', city=> {
+            this.savedCities.push(city)
             })
   }
 }
