@@ -14,10 +14,10 @@ export default {
   name: 'weather-drop-down-form',
   data() {
     return {
-      selectedCity: this.parentSelectedCity
+      selectedCity: {}
     }
   },
-  props: ['cities', 'parentSelectedCity'],
+  props: ['cities'],
   methods: {
     handleAddToFavourites() {
       eventBus.$emit('city-to-favourites', this.selectedCity)
