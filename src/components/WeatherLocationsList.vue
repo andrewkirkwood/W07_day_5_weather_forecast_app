@@ -17,7 +17,7 @@
             <td>{{ Math.round(item.max_temp) }}</td>
           </tr>
         </table>
-        <button v-model="cityToBeDeleted"type="button" v-on:click="handleUnfavourite">delete from favourites</button>
+        <button v-model="cityToBeDeleted" type="button"  :value="city" v-on:click="handleUnfavourite(city.woeid)">delete from favourites</button>
 
       </li>
     </ul>
@@ -37,8 +37,8 @@ export default {
   },
   props: ['cities'],
   methods: {
-    handleUnfavourite () {
-      eventBus.$emit('delete-city-from-favourites', this.cityToBeDeleted)
+    handleUnfavourite (id) {
+      eventBus.$emit('delete-city-from-favourites', id)
     }
 
   }

@@ -49,9 +49,10 @@
         }
       })
 
-      eventBus.$on('delete-city-from-favourites', cityToBeDeleted => {
+      eventBus.$on('delete-city-from-favourites', cityId => {
+        const cityToBeDeleted = this.savedCities.find(city => city.woeid === cityId)
         const index = this.savedCities.indexOf(cityToBeDeleted)
-        this.savedCities.splice(cityToBeDeleted, 1)
+        this.savedCities.splice(index, 1)
       })
     }
   }
